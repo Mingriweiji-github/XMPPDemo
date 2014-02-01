@@ -190,6 +190,6 @@
 
 - (void)sendButtonClicked:(UIButton *)button
 {
-    NSLog(@"send message:%@", self.input.text);
+    [self.callCenter sendMessage:self.input.text];
 }
 @end

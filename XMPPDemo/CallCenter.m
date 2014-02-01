@@ -46,9 +46,17 @@
     }
 }
 
-- (void)sendMessage:(NSString *)message
+- (void)sendMessage:(NSString *)messageStr
 {
+    NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+    [body setStringValue:messageStr];
     
+    NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
+    [message addAttributeWithName:@"type" stringValue:@"chat"];
+    [message addAttributeWithName:@"to" stringValue:@"casatwy@192.168.5.106"];
+    [message addChild:body];
+    
+    [self.xmppStream sendElement:message];
 }
 
 - (void)logout
